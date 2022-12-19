@@ -1,17 +1,7 @@
 <script setup lang="ts">
-const router = useRouter()
-const route = useRoute()
-const filter = ref((route.query.filter || '').toString())
+import { useTasks } from '@/tasks'
 
-const { data } = await useFetch<unknown[]>('/api/tasks', {
-  query: { filter: filter.value },
-})
-
-const items = ref(data.value || [])
-
-watch(filter, value => {
-  router.replace({ query: value ? { filter: value } : undefined })
-})
+const { filter, items } = await useTasks()
 </script>
 
 <template>

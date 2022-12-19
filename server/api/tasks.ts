@@ -1,18 +1,7 @@
-import { Task } from '#/tasks'
+import { read } from '$/tasks'
 
 export default defineEventHandler(event => {
   const { filter } = getQuery(event)
 
-  console.log(filter)
-
-  return [
-    {
-      id: 1,
-      text: 'Первый',
-    },
-    {
-      id: 2,
-      text: 'Второй',
-    },
-  ] as Task[]
+  return read(((Array.isArray(filter) ? filter[0] : filter) || '').toString())
 })
