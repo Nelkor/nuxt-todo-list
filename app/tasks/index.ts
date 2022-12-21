@@ -1,1 +1,1 @@
-export type { Task } from './types'
+export type { Task, CreateTaskResult } from './types'

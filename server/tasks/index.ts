@@ -2,7 +2,12 @@ import { store } from './store'
 import { createId } from './id-generator'
 
 export const create = (text: string) => {
-  store.push({ id: createId(), text })
+  const id = createId()
+  const time = Date.now()
+
+  store.push({ id, text, time })
+
+  return { id, time }
 }
 
 export const read = (filter = '') => {
