@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTasks } from '@/tasks'
 
-const { filter, items, createTask } = await useTasks()
+const { filter, taskName, items, addTask, rmTask } = await useTasks()
 </script>
 
 <template>
@@ -12,6 +12,11 @@ const { filter, items, createTask } = await useTasks()
     <input v-model="filter" type="text" />
   </div>
 
-  <div v-for="item in items" :key="item.id" class="item">{{ item.text }}</div>
-  <button @click="createTask">Добавить новое дело</button>
+  <div v-for="item in items" :key="item.id" class="item">
+    <p>{{ item.text }}</p>
+    <button @click="() => rmTask(item.id)">Удалить</button>
+  </div>
+
+  <input v-model="taskName" type="text" />
+  <button @click="addTask">Добавить новое дело</button>
 </template>

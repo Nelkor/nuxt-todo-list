@@ -2,7 +2,7 @@ import { Task } from '#/tasks'
 
 import { createId } from './id-generator'
 
-const now = Date.now()
+const time = Date.now()
 
 export const store: Task[] = [
   'Взять монету',
@@ -12,4 +12,4 @@ export const store: Task[] = [
   'Разыграть карту поддержки',
   'Атаковать ударом',
   'Использовать способность существа',
-].map(text => ({ id: createId(), text, time: now }))
+].map(text => ({ id: createId(), text, time }))
